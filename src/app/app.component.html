@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="projectName">Project Name :</label>
+          <input type="text" class="form-control" id="projectName" formControlName="projectName">
+        </div>
+        <span class="help-block"
+              style="color: #c00"
+              *ngIf="!form.get('projectName').valid && form.get('projectName').touched && form.get('projectName').errors !== null">
+
+            <span *ngIf="form.get('projectName').errors['required']" style="color: #c00;"  >
+            Please enter a Project Name.
+            </span>
+            <span style="color: #c00;" *ngIf="form.get('projectName').errors['NameInvalid']" >
+            Choose some other Project Name.
+            </span>
+
+        </span>
+
+
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" type="text" id="email" formControlName="email" >
+        </div>
+        <span class="help-block"
+              style="color: #c00"
+              *ngIf="!form.get('email').valid && form.get('email').touched">
+            Invalid Email id.
+        </span>
+
+
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" formControlName="status" id="status">
+            <option value="stable">Stable</option>
+            <option value="critical">Critical</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+
+        <button class="btn btn-info" type="submit">Submit</button>
+
+
+      </form>
+
+
+    </div>
+  </div>
+</div>
